@@ -4,22 +4,26 @@
   <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
       <mat-list>
-        <button (click)="opened = !opened" class="menu-btn">X</button>
-        <mat-list-item class="list" (click)="opened2 = !opened2"
+        <a (click)="opened = !opened" class="menu-btn">X</a>
+        <mat-list-item
+          routerLink="/child1"
+          routerLinkActive="active"
+          class="list"
+          (click)="opened2 = !opened2"
           >Table1</mat-list-item
         >
-        <mat-list-item class="list">Table2</mat-list-item>
+        <mat-list-item
+          routerLink="/child2"
+          routerLinkActive="active"
+          class="list"
+          >Table2</mat-list-item
+        >
       </mat-list>
     </mat-sidenav>
-    <a (click)="opened = !opened">Open</a>
+    <button (click)="opened = !opened">Open</button>
   </mat-sidenav-container>
 
-  <mat-sidenav-container>
-    <mat-sidenav [(opened)]="opened2" mode="side">
-      <mat-list>
-        <mat-list-item class="list">Table1</mat-list-item>
-        <mat-list-item class="list">Table2</mat-list-item>
-      </mat-list>
-    </mat-sidenav>
-  </mat-sidenav-container>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

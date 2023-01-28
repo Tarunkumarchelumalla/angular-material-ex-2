@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
+import { RouterModule } from '@angular/router';
+import {
+  AppRoutingModule,
+  routingcomps,
+} from './app-routing/app-routing.module';
 
 @NgModule({
   imports: [
@@ -14,8 +19,9 @@ import { MatListModule } from '@angular/material/list';
     MatSidenavModule,
     MatListModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
   ],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, HelloComponent, routingcomps],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
