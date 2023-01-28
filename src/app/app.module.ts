@@ -11,6 +11,7 @@ import {
   AppRoutingModule,
   routingcomps,
 } from './app-routing/app-routing.module';
+import { CarsdataService } from './carsdata.service';
 
 @NgModule({
   imports: [
@@ -23,5 +24,6 @@ import {
   ],
   declarations: [AppComponent, HelloComponent, routingcomps],
   bootstrap: [AppComponent],
+  providers: [CarsdataService],
 })
 export class AppModule {}
