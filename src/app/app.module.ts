@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatListModule } from '@angular/material/list';
-import { RouterModule } from '@angular/router';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatTableModule } from '@angular/material/table';
 import {
   AppRoutingModule,
   routingcomps,
 } from './app-routing/app-routing.module';
 import { CarsdataService } from './carsdata.service';
+// import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 
 @NgModule({
   imports: [
@@ -21,6 +23,9 @@ import { CarsdataService } from './carsdata.service';
     MatListModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    MatTableModule,
+    ScrollingModule,
+    
   ],
   declarations: [AppComponent, HelloComponent, routingcomps],
   bootstrap: [AppComponent],
