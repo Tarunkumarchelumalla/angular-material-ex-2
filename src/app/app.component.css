@@ -1,0 +1,40 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+p {
+  font-family: Lato;
+}
+mat-sidenav-container {
+  width: 400px;
+  height: 100vh;
+  color: white;
+}
+mat-sidenav {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: black;
+  height: 100%;
+}
+div {
+  display: flex;
+}
+button {
+  height: 50px;
+}
+.list {
+  cursor: pointer;
+  /* border: 20 px solid white; */
+  padding: 20px;
+}
+.menu-btn {
+  width: full;
+  justify-content: end;
+  padding: 20px;
+  float: left;
+  margin-left: 300px;
+  font-size: larger;
+  color: white;
+}
