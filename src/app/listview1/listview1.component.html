@@ -5,7 +5,9 @@
   <!-- Position Column -->
   <ng-container matColumnDef="carname">
     <th mat-header-cell *matHeaderCellDef>carname.</th>
-    <td mat-cell *matCellDef="let element">{{ element.carname }}</td>
+    <td mat-cell *matCellDef="let element">
+      <a (click)="onclick(element)">{{ element.carname }}</a>
+    </td>
   </ng-container>
 
   <!-- Name Column -->

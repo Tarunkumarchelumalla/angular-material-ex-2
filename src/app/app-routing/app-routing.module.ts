@@ -7,7 +7,7 @@ import { Listview2Component } from '../listview2/listview2.component';
 const routes: Routes = [
   { path: '', redirectTo: '/', pathMatch: 'full' },
   { path: 'child1', component: Listview1Component },
-  { path: 'child2', component: Listview2Component },
+  { path: 'child2/:id', component: Listview2Component },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

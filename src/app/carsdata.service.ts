@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { faker } from '@faker-js/faker';
 
-interface car {
+export interface car {
+  id: string;
   carname: string;
   carmodel: string;
   type: string;
@@ -16,6 +17,7 @@ export class CarsdataService {
   constructor() {
     function createcardata(): car {
       return {
+        id: faker.datatype.uuid(),
         carname: faker.vehicle.vehicle(),
         carmodel: faker.vehicle.model(),
         type: faker.vehicle.type(),
@@ -23,9 +25,15 @@ export class CarsdataService {
         vrm: faker.vehicle.vrm(),
       };
     }
-    Array.from({ length: 10000 }).forEach(() => {
+    Array.from({ length: 10}).forEach(() => {
       this.Cars.push(createcardata());
     });
-    console.log('hsgdgh');
+    console.log(this.Cars[0].id);
   }
+
+   retrive(uuid:string){
+    var result = this.Cars.find(o => o.id === uuid);
+    return result;
+  }
+
 }
