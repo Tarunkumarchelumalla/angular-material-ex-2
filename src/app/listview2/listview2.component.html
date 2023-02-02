@@ -1,15 +1,25 @@
-<mat-form-field appearance="fill">
-  <mat-label>Input</mat-label>
-  <input matInput />
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Select</mat-label>
-  <mat-select>
-    <mat-option value="one">First option</mat-option>
-    <mat-option value="two">Second option</mat-option>
-  </mat-select>
-</mat-form-field>
-<mat-form-field appearance="fill">
-  <mat-label>Textarea</mat-label>
-  <textarea matInput></textarea>
-</mat-form-field>
+<div class="div-form" [formGroup]="CarsForm">
+  <mat-form-field appearance="fill">
+    <mat-label>carname</mat-label>
+    <input matInput formControlName="carname" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>carmodel:</mat-label>
+    <input matInput formControlName="carmodel" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>type</mat-label>
+    <input matInput formControlName="type" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>vvin</mat-label>s
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>vrm</mat-label>
+    <input matInput formControlName="vrn" />
+  </mat-form-field>
+</div>

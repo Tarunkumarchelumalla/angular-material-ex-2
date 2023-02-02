@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
@@ -14,20 +14,23 @@ import {
   routingcomps,
 } from './app-routing/app-routing.module';
 import { CarsdataService } from './carsdata.service';
+import { MatInputModule } from '@angular/material/input';
 // import { TableVirtualScrollModule } from 'ng-table-virtual-scroll';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    MatFormFieldModule,
+    ReactiveFormsModule,
     MatSidenavModule,
     MatListModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatTableModule,
     ScrollingModule,
-    ,
+    MatFormFieldModule,
+  
+        MatInputModule
   ],
   declarations: [AppComponent, HelloComponent, routingcomps],
   bootstrap: [AppComponent],
