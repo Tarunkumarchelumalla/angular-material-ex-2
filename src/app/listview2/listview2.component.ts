@@ -20,10 +20,19 @@ export class Listview2Component implements OnInit {
   ngOnInit() {
     let id = this.activerouter.snapshot.paramMap.get('id');
     this.car.push(this._dtaa.retrive(id));
-    console.log(this.car);
+    console.log(this.car['carname']);
 
     this.CarsForm = new FormGroup({
-      carname: new FormControl(this.car['carname']),
+      carname: new FormControl(' '),
+      carmodel: new FormControl(' '),
+      type: new FormControl(' '),
+      vvin: new FormControl(' '),
+      vrm: new FormControl(' '),
+    });
+
+    console.log(this.car);
+    this.CarsForm.setValue({
+      carname: new FormControl(JSON.stringify(this.car[0])),
       carmodel: new FormControl(this.car['carmodel']),
       type: new FormControl(this.car['type']),
       vvin: new FormControl(this.car['vvin']),
