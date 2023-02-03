@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CarsdataService, car } from '../carsdata.service';
 import { Router } from '@angular/router';
+import { faker } from '@faker-js/faker';
 
 @Component({
   selector: 'app-listview2',
@@ -12,6 +13,7 @@ import { Router } from '@angular/router';
 export class Listview2Component implements OnInit {
   public id = '';
   CarsForm = new FormGroup({
+    id:new FormControl(' '),
     carname: new FormControl(' '),
     carmodel: new FormControl(' '),
     type: new FormControl(' '),
@@ -33,6 +35,7 @@ export class Listview2Component implements OnInit {
       const car = this._dtaa.retrive(this.id);
 
       this.CarsForm.setValue({
+        id:car.id,
         carname: car.carname,
         carmodel: car.carmodel,
         type: car.type,
@@ -41,6 +44,7 @@ export class Listview2Component implements OnInit {
       });
     } else {
       this.CarsForm.setValue({
+        id:faker.datatype.uuid(),
         carname: '',
         carmodel: '',
         type: '',
@@ -51,6 +55,7 @@ export class Listview2Component implements OnInit {
   }
   save(): void {
     // this._dtaa.onsave(val);
+    // const uuid =faker.datatype.uuid()
     console.log(this.CarsForm.value);
   }
   update(): void {
