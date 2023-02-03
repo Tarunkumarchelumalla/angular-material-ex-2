@@ -1,9 +1,20 @@
 <div class="top-container">
   <div class="div-btn">
-    <button mat-raised-button color="primary" (click)="create()">Add</button>
+    <mat-form-field class="example-full-width search">
+      <mat-label>search here</mat-label>
+      <input class="search" matInput placeholder="Ex. Pizza" value="Sushi" />
+    </mat-form-field>
+    <button
+      class="div-btn2"
+      mat-raised-button
+      color="primary"
+      (click)="create()"
+    >
+      Add
+    </button>
   </div>
 
-  <table mat-table [dataSource]="cardata" class="mat-elevation-z8">
+  <table mat-table [dataSource]="cardata" class="mat-elevation-z8 ok">
     <!--- Note that these columns can be defined in any order.
           The actual rendered columns are set as a property on the row definition" -->
 
@@ -11,7 +22,7 @@
     <ng-container matColumnDef="carname">
       <th mat-header-cell *matHeaderCellDef>carname.</th>
       <td mat-cell *matCellDef="let element">
-        <a (click)="onclick(element)">{{ element.carname }}</a>
+        <a class="anchor" (click)="onclick(element)">{{ element.carname }}</a>
       </td>
     </ng-container>
 

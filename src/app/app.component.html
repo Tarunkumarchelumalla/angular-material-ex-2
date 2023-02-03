@@ -1,4 +1,7 @@
 <mat-toolbar>
+  <button mat-raised-button color="primary" (click)="opened = !opened">
+    Open
+  </button>
   <div class="mat-tool">
     <span>My App</span>
   </div>
@@ -34,9 +37,6 @@
         >
       </mat-list>
     </mat-sidenav>
-    <button mat-raised-button color="primary" (click)="opened = !opened">
-      Open
-    </button>
   </mat-sidenav-container>
 
   <div class="div-outlet">

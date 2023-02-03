@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CarsdataService, car } from '../carsdata.service';
 import { Router } from '@angular/router';
@@ -14,11 +14,15 @@ export class Listview2Component implements OnInit {
   public id = '';
   CarsForm = new FormGroup({
     id: new FormControl(''),
-    carname: new FormControl(' '),
-    carmodel: new FormControl(' '),
-    type: new FormControl(' '),
-    vvin: new FormControl(' '),
-    vrm: new FormControl(' '),
+    carname: new FormControl('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(100),
+    ]),
+    carmodel: new FormControl('', [Validators.required,]),
+    type: new FormControl('', [Validators.required]),
+    vvin: new FormControl('', [Validators.required]),
+    vrm: new FormControl('', [Validators.required]),
   });
 
   constructor(

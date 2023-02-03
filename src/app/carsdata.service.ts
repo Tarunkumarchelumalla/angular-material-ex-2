@@ -15,13 +15,13 @@ import { faker } from '@faker-js/faker';
 //   age: ''
 // }
 
-interface CrudService {
-  list: (...args: any[]) => any;
-  create: (...args: any[]) => any;
-  update: (...args: any[]) => any;
-  delete: (...args: any[]) => any;
-  retrieve: (...args: any[]) => any;
-}
+// interface CrudService {
+//   list: (...args: any[]) => any;
+//   create: (...args: any[]) => any;
+//   update: (...args: any[]) => any;
+//   delete: (...args: any[]) => any;
+//   retrieve: (...args: any[]) => any;
+// }
 
 export interface car {
   id: string;
