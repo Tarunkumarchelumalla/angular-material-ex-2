@@ -46,3 +46,6 @@ button {
   display: flex;
   justify-content: space-around;
 }
+.div-outlet {
+  margin-top: 50px;
+}

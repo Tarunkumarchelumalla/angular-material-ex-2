@@ -13,7 +13,7 @@ import { faker } from '@faker-js/faker';
 export class Listview2Component implements OnInit {
   public id = '';
   CarsForm = new FormGroup({
-    id:new FormControl(' '),
+    id: new FormControl(''),
     carname: new FormControl(' '),
     carmodel: new FormControl(' '),
     type: new FormControl(' '),
@@ -35,7 +35,7 @@ export class Listview2Component implements OnInit {
       const car = this._dtaa.retrive(this.id);
 
       this.CarsForm.setValue({
-        id:car.id,
+        id: car.id,
         carname: car.carname,
         carmodel: car.carmodel,
         type: car.type,
@@ -44,7 +44,7 @@ export class Listview2Component implements OnInit {
       });
     } else {
       this.CarsForm.setValue({
-        id:faker.datatype.uuid(),
+        id: faker.datatype.uuid(),
         carname: '',
         carmodel: '',
         type: '',
@@ -53,13 +53,20 @@ export class Listview2Component implements OnInit {
       });
     }
   }
+  /// new one
   save(): void {
-    // this._dtaa.onsave(val);
-    // const uuid =faker.datatype.uuid()
+    this._dtaa.oncreate(this.CarsForm.value as car);
     console.log(this.CarsForm.value);
   }
+
+  /// update one
   update(): void {
-    // this._dtaa.onsave(val);
-    console.log(this.CarsForm.value);
+    this._dtaa.onupdate(
+      this.CarsForm.value as car,
+      this.CarsForm.get('id').value
+    );
+  }
+  delete(): void {
+    this._dtaa.ondelete(this.CarsForm.get('id').value);
   }
 }

@@ -1,34 +1,44 @@
-<div class="div-form" [formGroup]="CarsForm">
-  <mat-form-field appearance="fill">
-    <mat-label>carname</mat-label>
-    <input matInput formControlName="carname" />
-  </mat-form-field>
+<div class="container">
+  <div class="div-form" [formGroup]="CarsForm">
+    <mat-form-field appearance="fill">
+      <mat-label>carname</mat-label>
+      <input matInput formControlName="carname" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>carmodel:</mat-label>
-    <input matInput formControlName="carmodel" />
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>carmodel:</mat-label>
+      <input matInput formControlName="carmodel" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>type</mat-label>
-    <input matInput formControlName="type" />
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>type</mat-label>
+      <input matInput formControlName="type" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>vvin</mat-label>
-    <input matInput formControlName="vvin" />
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>vvin</mat-label>
+      <input matInput formControlName="vvin" />
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>vrm</mat-label>
-    <input matInput formControlName="vrm" />
-  </mat-form-field>
-</div>
+    <mat-form-field appearance="fill">
+      <mat-label>vrm</mat-label>
+      <input matInput formControlName="vrm" />
+    </mat-form-field>
+  </div>
+  <div class="btns">
+    <div *ngIf="id === '0'">
+      <button mat-raised-button color="primary" (click)="save()">save</button>
+    </div>
 
-<div *ngIf="id === '0'">
-  <button mat-raised-button color="primary" (click)="save()">save</button>
-</div>
-
-<div *ngIf="id != '0'">
-  <button mat-raised-button color="primary" (click)="update()">Update</button>
+    <div *ngIf="id != '0'">
+      <button mat-raised-button color="primary" (click)="update()">
+        Update
+      </button>
+    </div>
+    <div *ngIf="id != '0'">
+      <button mat-raised-button color="primary" (click)="delete()">
+        delete
+      </button>
+    </div>
+  </div>
 </div>

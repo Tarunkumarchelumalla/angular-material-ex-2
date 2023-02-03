@@ -1,6 +1,28 @@
 import { Injectable } from '@angular/core';
 import { faker } from '@faker-js/faker';
 
+// PascalCase (Interface Classes)
+// snake_case
+// camelCase (functions, variables)
+
+// interface Tarun<T1, T2> {
+//   name: T1;
+//   age: T2;
+// }
+
+// const abc: Tarun<string, number> = {
+//   name: 0,
+//   age: ''
+// }
+
+interface CrudService {
+  list: (...args: any[]) => any;
+  create: (...args: any[]) => any;
+  update: (...args: any[]) => any;
+  delete: (...args: any[]) => any;
+  retrieve: (...args: any[]) => any;
+}
+
 export interface car {
   id: string;
   carname: string;
@@ -9,6 +31,11 @@ export interface car {
   vvin: string;
   vrm: string;
 }
+
+// type X = Partial<car>;
+// type Scrap = Omit<car, 'type' | 'vvin' | 'vrm'>;
+
+// type Pujan = car | Scrap;
 
 @Injectable()
 export class CarsdataService {
@@ -28,7 +55,6 @@ export class CarsdataService {
     Array.from({ length: 10 }).forEach(() => {
       this.Cars.push(createcardata());
     });
- 
   }
 
   retrive(uuid: string): car {
@@ -36,10 +62,16 @@ export class CarsdataService {
     return result;
   }
 
-  onsave(car:car):void{
+  oncreate(car: car): void {
     this.Cars.push(car);
   }
-  // onupdate(car:car,id):void{
-
-  // }
+  onupdate(car: car, id: string): void {
+    let index = this.Cars.findIndex((val) => val.id === id);
+    this.Cars.splice(index, 1, car);
+    console.log(this.Cars);
+  }
+  ondelete(id:string){
+    let index = this.Cars.findIndex((val) => val.id === id);
+    this.Cars.splice(index, 1);
+  }
 }
