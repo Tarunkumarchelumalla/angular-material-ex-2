@@ -1,10 +1,23 @@
+<mat-toolbar>
+  <div class="mat-tool">
+    <span>My App</span>
+  </div>
+</mat-toolbar>
+
 <div>
   <!-- <hello name="{{ name }}"></hello>
   <p>Start editing to see some magic happen :)</p> -->
   <mat-sidenav-container>
     <mat-sidenav [(opened)]="opened" mode="side">
       <mat-list>
-        <a (click)="opened = !opened" class="menu-btn">X</a>
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="opened = !opened"
+          class="menu-btn"
+        >
+          X
+        </button>
         <mat-list-item
           routerLink="/child1"
           routerLinkActive="active"
@@ -21,7 +34,9 @@
         >
       </mat-list>
     </mat-sidenav>
-    <button (click)="opened = !opened">Open</button>
+    <button mat-raised-button color="primary" (click)="opened = !opened">
+      Open
+    </button>
   </mat-sidenav-container>
 
   <div>

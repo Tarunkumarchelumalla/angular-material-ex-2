@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { CarsdataService, car } from '../carsdata.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listview2',
@@ -9,34 +10,51 @@ import { CarsdataService, car } from '../carsdata.service';
   styleUrls: ['./listview2.component.css'],
 })
 export class Listview2Component implements OnInit {
-  public car = [];
+  public id = '';
+  CarsForm = new FormGroup({
+    carname: new FormControl(' '),
+    carmodel: new FormControl(' '),
+    type: new FormControl(' '),
+    vvin: new FormControl(' '),
+    vrm: new FormControl(' '),
+  });
 
-  CarsForm: FormGroup;
   constructor(
     private activerouter: ActivatedRoute,
+    private router: Router,
     private _dtaa: CarsdataService
   ) {}
 
   ngOnInit() {
-    let id = this.activerouter.snapshot.paramMap.get('id');
-    this.car.push(this._dtaa.retrive(id));
-    console.log(this.car['carname']);
+    this.id = this.activerouter.snapshot.paramMap.get('id');
 
-    this.CarsForm = new FormGroup({
-      carname: new FormControl(' '),
-      carmodel: new FormControl(' '),
-      type: new FormControl(' '),
-      vvin: new FormControl(' '),
-      vrm: new FormControl(' '),
-    });
+    if (this.id != '0') {
+      console.log(this.id);
+      const car = this._dtaa.retrive(this.id);
 
-    console.log(this.car);
-    this.CarsForm.setValue({
-      carname: new FormControl(JSON.stringify(this.car[0])),
-      carmodel: new FormControl(this.car['carmodel']),
-      type: new FormControl(this.car['type']),
-      vvin: new FormControl(this.car['vvin']),
-      vrm: new FormControl(this.car['vrm']),
-    });
+      this.CarsForm.setValue({
+        carname: car.carname,
+        carmodel: car.carmodel,
+        type: car.type,
+        vvin: car.vvin,
+        vrm: car.vrm,
+      });
+    } else {
+      this.CarsForm.setValue({
+        carname: '',
+        carmodel: '',
+        type: '',
+        vvin: '',
+        vrm: '',
+      });
+    }
+  }
+  save(): void {
+    // this._dtaa.onsave(val);
+    console.log(this.CarsForm.value);
+  }
+  update(): void {
+    // this._dtaa.onsave(val);
+    console.log(this.CarsForm.value);
   }
 }

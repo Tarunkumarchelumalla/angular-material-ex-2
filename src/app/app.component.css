@@ -41,3 +41,8 @@ button {
 .a {
   color: black;
 }
+.mat-tool {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}

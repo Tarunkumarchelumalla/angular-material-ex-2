@@ -9,6 +9,9 @@ import { MatListModule } from '@angular/material/list';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import {
   AppRoutingModule,
   routingcomps,
@@ -29,8 +32,10 @@ import { MatInputModule } from '@angular/material/input';
     MatTableModule,
     ScrollingModule,
     MatFormFieldModule,
-  
-        MatInputModule
+    MatToolbarModule,
+    MatButtonModule,
+        MatInputModule,
+        MatIconModule,
   ],
   declarations: [AppComponent, HelloComponent, routingcomps],
   bootstrap: [AppComponent],

@@ -19,4 +19,7 @@ export class Listview1Component implements OnInit {
     // console.log(this._data.retrive(id));
     this.router.navigate(['/child2', val.id]);
   }
+  create() {
+    this.router.navigate(['/child2', '0']);
+  }
 }

@@ -24,3 +24,11 @@
     <input matInput formControlName="vrm" />
   </mat-form-field>
 </div>
+
+<div *ngIf="id === '0'">
+  <button mat-raised-button color="primary" (click)="save()">save</button>
+</div>
+
+<div *ngIf="id != '0'">
+  <button mat-raised-button color="primary" (click)="update()">Update</button>
+</div>

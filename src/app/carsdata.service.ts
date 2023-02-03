@@ -25,15 +25,21 @@ export class CarsdataService {
         vrm: faker.vehicle.vrm(),
       };
     }
-    Array.from({ length: 10}).forEach(() => {
+    Array.from({ length: 10 }).forEach(() => {
       this.Cars.push(createcardata());
     });
-    console.log(this.Cars[0].id);
+ 
   }
 
-   retrive(uuid:string){
-    var result = this.Cars.find(o => o.id === uuid);
+  retrive(uuid: string): car {
+    var result = this.Cars.find((o) => o.id === uuid);
     return result;
   }
 
+  onsave(car:car):void{
+    this.Cars.push(car);
+  }
+  // onupdate(car:car,id):void{
+
+  // }
 }
