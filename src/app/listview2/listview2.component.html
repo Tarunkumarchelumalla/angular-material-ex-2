@@ -3,26 +3,48 @@
     <mat-form-field appearance="fill">
       <mat-label>carname</mat-label>
       <input matInput formControlName="carname" />
+      <mat-error *ngIf="CarsForm.get('carname').hasError('required')">
+        it is required mandatory
+      </mat-error>
+      <mat-error *ngIf="CarsForm.get('carname').hasError('maxlength')">
+        check length
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>carmodel:</mat-label>
       <input matInput formControlName="carmodel" />
+      <mat-error *ngIf="CarsForm.get('carmodel').hasError('required')">
+        it is required mandatory
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>type</mat-label>
       <input matInput formControlName="type" />
+      <mat-error *ngIf="CarsForm.get('type').hasError('required')">
+        it is required mandatory
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>vvin</mat-label>
       <input matInput formControlName="vvin" />
+
+      <mat-error *ngIf="CarsForm.get('vvin').hasError('required')">
+        it is required mandatory
+      </mat-error>
+      <mat-error *ngIf="CarsForm.get('vvin').hasError('valwithpara')">
+        it must be less than 2000
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill">
       <mat-label>vrm</mat-label>
       <input matInput formControlName="vrm" />
+      <mat-error *ngIf="CarsForm.get('vrm').hasError('required')">
+        it is required mandatory
+      </mat-error>
     </mat-form-field>
   </div>
   <div class="btns">
