@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { faker } from '@faker-js/faker';
+import { delay, of } from 'rxjs';
 
 // PascalCase (Interface Classes)
 // snake_case
@@ -73,5 +74,10 @@ export class CarsdataService {
   ondelete(id:string){
     let index = this.Cars.findIndex((val) => val.id === id);
     this.Cars.splice(index, 1);
+  }
+  checkIfUsernameExists(value: string) {
+    return of(this.Cars.some((a) => a.carname === value)).pipe(
+      delay(1000)
+    );
   }
 }
