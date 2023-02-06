@@ -25,17 +25,15 @@ export class Listview2Component implements OnInit {
     private activerouter: ActivatedRoute,
     private router: Router,
     private _dtaa: CarsdataService
-  ) {
-
-  }
+  ) {}
 
   CarsForm = new FormGroup({
     id: new FormControl(''),
-    carname: new FormControl('', [
-      Validators.required,
-      Validators.minLength(2),
-      Validators.maxLength(10),
-    ],[unique(this._dtaa)]),
+    carname: new FormControl(
+      '',
+      [Validators.required],
+      [this.unique()]
+    ),
     carmodel: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     vvin: new FormControl('', [
@@ -45,13 +43,11 @@ export class Listview2Component implements OnInit {
     vrm: new FormControl('', [Validators.required]),
   });
 
- 
-
   ngOnInit() {
     this.id = this.activerouter.snapshot.paramMap.get('id');
 
     if (this.id != '0') {
-      console.log(this.id);
+      // console.log(this.id);
       const car = this._dtaa.retrive(this.id);
 
       this.CarsForm.setValue({
@@ -89,6 +85,18 @@ export class Listview2Component implements OnInit {
   delete(): void {
     this._dtaa.ondelete(this.CarsForm.get('id').value);
   }
+  unique(): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors> => {
+      console.log(this.id);
+      return this._dtaa
+        .checkIfUsernameExists(control.value, this.id)
+        .pipe(
+          map((result: boolean) =>
+            result ? { usernameAlreadyExists: true } : null
+          )
+        );
+    };
+  }
 }
 function customValidatorwithpara(customval: number) {
   return (control: AbstractControl): { [key: string]: any } | null => {
@@ -101,14 +109,4 @@ function customValidatorwithpara(customval: number) {
     }
   };
 }
-function unique(userService: CarsdataService): AsyncValidatorFn {
-  return (control: AbstractControl): Observable<ValidationErrors> => {
-    return userService
-      .checkIfUsernameExists(control.value)
-      .pipe(
-        map((result: boolean) =>
-          result ? { usernameAlreadyExists: true } : null
-        )
-      );
-  };
-}
+
