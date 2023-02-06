@@ -3,12 +3,17 @@
     <mat-form-field appearance="fill">
       <mat-label>carname</mat-label>
       <input matInput formControlName="carname" />
+      <mat-error
+        *ngIf="CarsForm.get('carname').hasError('usernameAlreadyExists')"
+      >
+        username already exists
+      </mat-error>
       <mat-error *ngIf="CarsForm.get('carname').hasError('required')">
         it is required mandatory
       </mat-error>
-      <mat-error *ngIf="CarsForm.get('carname').hasError('maxlength')">
+      <!-- <mat-error *ngIf="CarsForm.get('carname').hasError('maxlength')">
         check length
-      </mat-error>
+      </mat-error> -->
     </mat-form-field>
 
     <mat-form-field appearance="fill">
