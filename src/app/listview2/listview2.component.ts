@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {
   AbstractControl,
+  AsyncValidatorFn,
   FormControl,
   FormGroup,
+  ValidationErrors,
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -10,6 +12,7 @@ import { CarsdataService, car } from '../carsdata.service';
 import { Router } from '@angular/router';
 import { faker } from '@faker-js/faker';
 import { validateVerticalPosition } from '@angular/cdk/overlay';
+import { delay, map, Observable, of } from 'rxjs';
 
 @Component({
   selector: 'app-listview2',
@@ -18,13 +21,21 @@ import { validateVerticalPosition } from '@angular/cdk/overlay';
 })
 export class Listview2Component implements OnInit {
   public id = '';
+  constructor(
+    private activerouter: ActivatedRoute,
+    private router: Router,
+    private _dtaa: CarsdataService
+  ) {
+
+  }
+
   CarsForm = new FormGroup({
     id: new FormControl(''),
     carname: new FormControl('', [
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(10),
-    ]),
+    ],[unique(this._dtaa)]),
     carmodel: new FormControl('', [Validators.required]),
     type: new FormControl('', [Validators.required]),
     vvin: new FormControl('', [
@@ -34,11 +45,7 @@ export class Listview2Component implements OnInit {
     vrm: new FormControl('', [Validators.required]),
   });
 
-  constructor(
-    private activerouter: ActivatedRoute,
-    private router: Router,
-    private _dtaa: CarsdataService
-  ) {}
+ 
 
   ngOnInit() {
     this.id = this.activerouter.snapshot.paramMap.get('id');
@@ -92,5 +99,16 @@ function customValidatorwithpara(customval: number) {
     } else {
       return { valwithpara: true };
     }
+  };
+}
+function unique(userService: CarsdataService): AsyncValidatorFn {
+  return (control: AbstractControl): Observable<ValidationErrors> => {
+    return userService
+      .checkIfUsernameExists(control.value)
+      .pipe(
+        map((result: boolean) =>
+          result ? { usernameAlreadyExists: true } : null
+        )
+      );
   };
 }
