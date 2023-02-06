@@ -71,13 +71,20 @@ export class CarsdataService {
     this.Cars.splice(index, 1, car);
     console.log(this.Cars);
   }
-  ondelete(id:string){
+  ondelete(id: string) {
     let index = this.Cars.findIndex((val) => val.id === id);
     this.Cars.splice(index, 1);
   }
-  checkIfUsernameExists(value: string) {
-    return of(this.Cars.some((a) => a.carname === value)).pipe(
-      delay(1000)
-    );
+  checkIfUsernameExists(value: string, id: string) {
+    return of(
+      this.Cars.some((a) => {
+        console.log(id);
+        if (id != a.id) {
+          return a.carname === value;
+        } else {
+          return false;
+        }
+      })
+    ).pipe(delay(1000));
   }
 }
